@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-  base: "/premium-test/", // ✅ CRITICAL
+  base: "/premium-test/", // ✅ REQUIRED for subfolder deploy
 
   plugins: [
     react(),
@@ -19,5 +19,11 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+  },
+
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    emptyOutDir: true,
   },
 });
